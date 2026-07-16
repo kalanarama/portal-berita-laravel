@@ -26,4 +26,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/home', function () {
         return view('home');
     });
+
+    // admin CRUD
+    Route::get('/admin/posts', [PostController::class, 'adminIndex'])->name('admin.posts.index');
+    Route::get('/admin/posts/create', [PostController::class, 'create'])->name('admin.posts.create');
+    Route::post('/admin/posts', [PostController::class, 'store'])->name('admin.posts.store');
+    Route::get('/admin/posts/{id}/edit', [PostController::class, 'edit'])->name('admin.posts.edit');
+    Route::put('/admin/posts/{id}', [PostController::class, 'update'])->name('admin.posts.update');
+    Route::delete('/admin/posts/{id}', [PostController::class, 'destroy'])->name('admin.posts.destroy');
 });
