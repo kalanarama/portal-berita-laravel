@@ -39,15 +39,17 @@
                     @endif
                 </td>
                 <td>{{ $post->created_at->format('d M Y') }}</td>
-                <td class="d-flex gap-1">
-                    <a href="{{ url('/posts/'.$post->id) }}" class="btn btn-sm btn-outline-secondary" target="_blank">Lihat</a>
-                    <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                    <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST"
-                          onsubmit="return confirm('Yakin hapus berita ini?')">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
-                    </form>
+                <td>
+                    <div class="d-flex gap-1 flex-nowrap">
+                        <a href="{{ url('/posts/'.$post->id) }}" class="btn btn-sm btn-outline-secondary" target="_blank">Lihat</a>
+                        <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                        <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST"
+                            onsubmit="return confirm('Yakin hapus berita ini?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                        </form>
+                    </div>
                 </td>
             </tr>
             @endforeach
